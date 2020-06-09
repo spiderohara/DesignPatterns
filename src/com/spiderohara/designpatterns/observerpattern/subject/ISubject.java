@@ -8,6 +8,8 @@ public interface ISubject {
 	void addUpdate(UpdateInformation updateInformation);
 
 	void registerObserver(IObserver subscriber, EventTypes eventType);
+	
+	void unRegisterObserver(IObserver subscriber);
 
 	void notify(UpdateInformation updateInformation);
 }
