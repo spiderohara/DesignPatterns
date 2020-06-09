@@ -26,7 +26,7 @@ public class GovernmentExam implements ISubject {
 	@Override
 	public void addUpdate(UpdateInformation updateInformation) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("GOVERNMENT MADE A NEW ANNOUNCEMENT REGARDING ");
+		builder.append("\n\nGOVERNMENT MADE A NEW ANNOUNCEMENT REGARDING ");
 		builder.append(updateInformation.getEventType());
 		builder.append(" EXAMS.");
 		System.out.println(builder);
@@ -38,10 +38,21 @@ public class GovernmentExam implements ISubject {
 
 	@Override
 	public void notify(UpdateInformation updateInformation) {
+		boolean observerFound = false;
 		for (IObserver obs : observers.keySet()) {
 			if (observers.get(obs).equals(updateInformation.getEventType())) {
 				obs.update(updateInformation);
+				observerFound = true;
 			}
 		}
+
+		if (!observerFound) {
+			System.out.println("No observer found.");
+		}
+	}
+
+	@Override
+	public void unRegisterObserver(IObserver subscriber) {
+		observers.remove(subscriber);
 	}
 }

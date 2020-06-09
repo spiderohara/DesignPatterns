@@ -5,7 +5,6 @@ import com.spiderohara.designpatterns.observerpattern.subject.GovernmentExam;
 
 public interface IObserver {
 
-
 	default void update(UpdateInformation information) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(information.getEventType() + " UPDATE: \n");
@@ -13,4 +12,8 @@ public interface IObserver {
 
 		System.out.println(builder.toString());
 	}
+
+	void registerObserver();
+
+	void unregisterObserver();
 }

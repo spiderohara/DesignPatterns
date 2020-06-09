@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.spiderohara.designpatterns.factorypattern.Factory;
+import com.spiderohara.designpatterns.factorypattern.dialog.Dialog;
+import com.spiderohara.designpatterns.factorypattern.enums.ButtonType;
 import com.spiderohara.designpatterns.immutable.Immutable;
 import com.spiderohara.designpatterns.observerpattern.data.UpdateInformation;
 import com.spiderohara.designpatterns.observerpattern.enums.EventTypes;
@@ -23,6 +26,8 @@ public class Startup {
 		immutableExample();
 
 		observerPatternExample();
+
+		factoryPatternExample();
 	}
 
 	private static void singletonExample() {
@@ -99,4 +104,13 @@ public class Startup {
 
 	}
 
+	private static void factoryPatternExample() {
+		ButtonType buttonType = ButtonType.WINDOWS;
+		Dialog getDialog = Factory.GetDialog(buttonType);
+		getDialog.render();
+
+		buttonType = ButtonType.HTML;
+		getDialog = Factory.GetDialog(buttonType);
+		getDialog.render();
+	}
 }
