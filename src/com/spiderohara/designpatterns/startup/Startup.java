@@ -12,19 +12,43 @@ import com.spiderohara.designpatterns.observerpattern.observers.SSCExamPortal;
 import com.spiderohara.designpatterns.observerpattern.observers.UPSCExamPortal;
 import com.spiderohara.designpatterns.observerpattern.subject.GovernmentExam;
 import com.spiderohara.designpatterns.observerpattern.subject.ISubject;
+import com.spiderohara.designpatterns.singleton.ClassicSingleton;
+import com.spiderohara.designpatterns.singleton.ThreadSafeSingleton;
 
 public class Startup {
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		singletonExample();
-		
+
 		immutableExample();
 
 		observerPatternExample();
 	}
 
 	private static void singletonExample() {
-		
+		// Classic singleton example.
+		ClassicSingleton classicSingleton = ClassicSingleton.getInstance();
+		classicSingleton.Method(classicSingleton);
+
+		// Thread Safe Singleton Example.
+		ThreadSafeSingleton threadSafeSingleton = ThreadSafeSingleton.getInstance();
+		threadSafeSingleton.Method(threadSafeSingleton);
+	}
+
+	private static void immutableExample() {
+		@SuppressWarnings("deprecation")
+		Immutable immutable = new Immutable(1, "Gaurav", new Date(0, 1, 12));
+		int employeeId = immutable.getEmployeeId();
+		System.out.println(employeeId);
+
+		String employeeName = immutable.getEmployeeName();
+		System.out.println(employeeName);
+
+		System.out.println(immutable.getAddedOn());
+		Date addedOn = immutable.getAddedOn();
+		addedOn = new Date();
+		System.out.println(addedOn);
+		System.out.println(immutable.getAddedOn());
 	}
 
 	private static void observerPatternExample() {
@@ -73,22 +97,6 @@ public class Startup {
 
 		scanner.close();
 
-	}
-
-	private static void immutableExample() {
-		@SuppressWarnings("deprecation")
-		Immutable immutable = new Immutable(1, "Gaurav", new Date(0, 1, 12));
-		int employeeId = immutable.getEmployeeId();
-		System.out.println(employeeId);
-
-		String employeeName = immutable.getEmployeeName();
-		System.out.println(employeeName);
-
-		System.out.println(immutable.getAddedOn());
-		Date addedOn = immutable.getAddedOn();
-		addedOn = new Date();
-		System.out.println(addedOn);
-		System.out.println(immutable.getAddedOn());
 	}
 
 }
