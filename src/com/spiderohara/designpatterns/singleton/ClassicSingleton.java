@@ -3,7 +3,7 @@ package com.spiderohara.designpatterns.singleton;
 public class ClassicSingleton {
 
 	// Single Instance we need to return.
-	private ClassicSingleton classicSingleton = null;
+	private static ClassicSingleton classicSingleton = null;
 
 	// Private Constructor: So that outsider won;t be able to create more instances.
 	private ClassicSingleton() {
@@ -11,7 +11,7 @@ public class ClassicSingleton {
 	}
 
 	// Method to get the instance(single) of the class.
-	public ClassicSingleton getInstance() {
+	public static ClassicSingleton getInstance() {
 		if (classicSingleton == null) {
 			// Initialize the singleton class.
 			classicSingleton = new ClassicSingleton();

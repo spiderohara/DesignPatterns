@@ -1,10 +1,10 @@
 package com.spiderohara.designpatterns.singleton;
 
 public class ThreadSafeSingleton {
-	Object o = new Object();
+	static Object o = new Object();
 
 	// Single Instance we need to return.
-	private ThreadSafeSingleton threadSafeSingleton = null;
+	private static ThreadSafeSingleton threadSafeSingleton = null;
 
 	// Private Constructor: So that outsider won;t be able to create more instances.
 	private ThreadSafeSingleton() {
@@ -12,7 +12,7 @@ public class ThreadSafeSingleton {
 	}
 
 	// Method to get the instance(single) of the class.
-	public ThreadSafeSingleton getInstance() {
+	public static ThreadSafeSingleton getInstance() {
 		if (threadSafeSingleton == null) {
 			synchronized (o) {
 				// Initialize the singleton class.
